@@ -7,11 +7,13 @@ export default {
     .setDescription("Get a meme"),
 
   async execute(interaction) {
-    const meme = await getMeme();
+    // 1. Get the random data from the helper
+    const { saying, embed } = await getMeme();
 
+    // 2. Use the random saying in 'content' 
     await interaction.reply({
-      content: "Here’s a meme for you :) :)",
-      embeds: [meme],
+      content: saying, 
+      embeds: [embed],  
     });
   },
 };
